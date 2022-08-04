@@ -13,6 +13,32 @@ $maxWidth: 1440;
   }
 }
 
+@mixin for-phone-only {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+@mixin for-tablet-portrait {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin for-tablet-landscape {
+  @media (max-width: 992px) {
+    @content;
+  }
+}
+@mixin for-desktop {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin for-big-desktop {
+  @media (max-width: 1920px) {
+    @content;
+  }
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
@@ -51,13 +77,14 @@ body {
         .logo {
           padding: 16px 0;
           font-weight: 600;
+          font-size: 36pt;
           @include adaptive-font(36, 18);
         }
         .search__block {
+          flex-grow: 0.2;
           display: flex;
           justify-content: space-between;
           height: 36px;
-          width: 20%;
           input {
             width: 100%;
             border-radius: 20px;
@@ -76,7 +103,6 @@ body {
           }
         }
         ul {
-          width: 13.68%;
           padding: 0;
           display: flex;
           justify-content: space-between;
@@ -119,6 +145,9 @@ body {
   max-width: 1440px;
   padding: 0 100px;
   margin: auto;
+  @include for-tablet-landscape() {
+    padding: 0 32px;
+  }
   .categories {
     margin-top: 64px;
     h2 {
@@ -134,10 +163,18 @@ body {
         flex-direction: row;
         justify-content: space-between;
         margin-bottom: 30px;
+        @include for-tablet-portrait() {
+          margin: 0;
+          flex-direction: column;
+          flex-wrap: wrap;
+        }
         .catalog__card {
           cursor: pointer;
           width: 100%;
           transition: all 0.3s;
+          @include for-tablet-portrait() {
+            margin-bottom: 30px;
+          }
           .position {
             width: 100%;
             position: relative;
@@ -151,7 +188,7 @@ body {
               top: 50%;
               transform: translate(-50%, -50%);
               color: #fff;
-              @include adaptive-font(34, 28);
+              @include adaptive-font(34, 24);
             }
           }
           &:hover {
@@ -174,6 +211,13 @@ body {
     margin-top: 64px;
     h2 {
       @include adaptive-font(44, 24);
+      margin-left: 1.666%;
+      @include for-tablet-landscape() {
+        margin-left: 2%;
+      }
+    }
+    @include for-tablet-landscape() {
+      margin: 0 -2%;
     }
     .catalog__wrapper {
       display: flex;
@@ -189,8 +233,18 @@ body {
         flex-direction: column;
         width: 30%;
         margin: 0 1.666%;
-        padding-bottom: 40px;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
         background-color: #fff;
+        @include for-tablet-landscape() {
+          width: 46%;
+          margin: 0 2%;
+          margin-bottom: 20px;
+        }
+        @include for-phone-only() {
+          width: 90%;
+          margin: 0 5%;
+        }
         img {
           display: block;
         }
@@ -230,10 +284,17 @@ body {
       .logo {
         @include adaptive-font(36, 32);
         font-weight: 600;
+        @include for-tablet-portrait() {
+          display: none;
+        }
+      }
+      @include for-phone-only() {
+        flex-wrap: wrap;
       }
       nav {
         display: flex;
         justify-content: space-between;
+
         h3 {
           margin-top: 0;
         }
@@ -256,16 +317,30 @@ body {
         flex-direction: column;
         text-align: left;
         justify-content: space-between;
+        @include for-phone-only() {
+          width: 100%;
+          text-align: center;
+        }
         span {
           font-size: 12px;
+          @include for-phone-only() {
+            margin-bottom: 20px;
+          }
         }
         input {
           border: 1px #c4c4c4 solid;
           height: 46px;
           border-radius: 20px;
           padding-left: 24px;
+          @include for-phone-only() {
+            padding-left: 0;
+            margin-bottom: 20px;
+          }
           &::placeholder {
             color: #c4c4c4;
+            @include for-phone-only() {
+              text-align: center;
+            }
           }
         }
         .button__email {
@@ -279,12 +354,18 @@ body {
           border: 1px #fff solid;
           border-radius: 20px;
           transition: all 0.3s;
+          span {
+            @include for-phone-only() {
+              margin-bottom: 0;
+            }
+          }
 
           cursor: pointer;
           &:hover {
             transform: translate(0, 2px);
             background-color: rgba(222, 215, 215, 0.81);
             transition: all 0.3s;
+            border: 1px #fff solid;
           }
         }
       }

@@ -33,7 +33,7 @@ function App() {
         <section className="categories">
           <h2>Мебель для ...</h2>
           <div className="wrapper_catalog">
-            <div className="row row-top">
+            <div className="row">
               <div className="catalog__card">
                 <div className="position">
                   <img src="/img/categories/relaxation.png" alt="" />
@@ -47,7 +47,7 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className="row row-bottom">
+            <div className="row">
               <div className="catalog__card">
                 <div className="position">
                   <img src="/img/categories/kitchen.png" alt="" />
