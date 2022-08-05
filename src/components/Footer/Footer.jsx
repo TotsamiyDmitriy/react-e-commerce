@@ -21,7 +21,7 @@ const Footer = () => {
             <div className={classes.column}>
               <h3>Контакты</h3>
               <ul>
-                <li>+7 908 800 80 80 </li>
+                <li>+38 098 800 80 80 </li>
                 <li>help@interier.com</li>
                 <li>
                   <ul>
