@@ -73,6 +73,40 @@ body {
         align-items: center;
         width: 100%;
         border-bottom: 0.5px rgba(255, 255, 255, 0.8) solid;
+        @include for-phone-only() {
+          border-bottom: none;
+        }
+
+        .nav__mobile {
+          display: none;
+          @include for-phone-only() {
+            width: 32%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            align-items: center;
+            .wrapper__img {
+              position: relative;
+              width: 30px;
+              height: 30px;
+              transition: all 0.3s;
+              img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                display: block;
+                cursor: pointer;
+              }
+              &:hover {
+                transition: all 0.3s;
+                background-color: rgba(173, 173, 173, 0.377);
+                border-radius: 15px;
+              }
+            }
+          }
+        }
 
         .logo {
           padding: 16px 0;
@@ -85,6 +119,9 @@ body {
           display: flex;
           justify-content: space-between;
           height: 36px;
+          @include for-phone-only() {
+            display: none;
+          }
           input {
             width: 100%;
             border-radius: 20px;
@@ -107,6 +144,9 @@ body {
           display: flex;
           justify-content: space-between;
           list-style: none;
+          @include for-phone-only() {
+            display: none;
+          }
           li {
             cursor: pointer;
             &:first-child {
@@ -121,12 +161,18 @@ body {
         display: flex;
         justify-content: flex-start;
         flex-direction: column;
+        @include for-phone-only() {
+          align-items: center;
+        }
         h1 {
           margin: 0;
           @include adaptive-font(64, 48);
           font-weight: 600;
           line-height: 70pt;
           margin-bottom: 16px;
+          @include for-phone-only() {
+            text-align: center;
+          }
         }
         span {
           @include adaptive-font(24, 16);
@@ -228,6 +274,7 @@ body {
         justify-content: flex-start;
       }
       .card {
+        transition: all 0.3s ease-in-out;
         cursor: pointer;
         display: flex;
         flex-direction: column;
@@ -244,7 +291,7 @@ body {
         @include for-phone-only() {
           width: 90%;
           margin: 0 5%;
-          margin-bottom: 20px;
+          margin-bottom: 30px;
         }
         img {
           display: block;
@@ -295,19 +342,23 @@ body {
       nav {
         display: flex;
         justify-content: space-between;
-
-        h3 {
-          margin-top: 0;
-        }
-        ul {
-          padding: 0;
-          list-style: none;
-          margin-bottom: 0;
-          li {
-            margin-bottom: 10px;
-            ul {
-              display: flex;
-              column-gap: 10%;
+        .column {
+          h3 {
+            margin-top: 0;
+          }
+          ul {
+            padding: 0;
+            list-style: none;
+            margin-bottom: 0;
+            li {
+              margin-bottom: 10px;
+              ul {
+                display: flex;
+                column-gap: 10%;
+              }
+            }
+            &.navigation__footer {
+              cursor: pointer;
             }
           }
         }

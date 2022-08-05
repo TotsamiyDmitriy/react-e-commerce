@@ -16,6 +16,17 @@ function App() {
                 <li>Каталог</li>
                 <li>Корзина</li>
               </ul>
+              <div className="nav__mobile">
+                <div className="wrapper__img">
+                  <img src="./img/gg_search.svg" alt="" />
+                </div>
+                <div className="wrapper__img">
+                  <img src="./img/Group 201.svg" alt="" />
+                </div>
+                <div className="wrapper__img">
+                  <img src="./img/Group 54.svg" alt="" />
+                </div>
+              </div>
             </nav>
             <div className="description">
               <h1>
@@ -124,7 +135,7 @@ function App() {
             <nav>
               <div className="column">
                 <h3>Меню</h3>
-                <ul>
+                <ul className="navigation__footer">
                   <li>Главная</li>
                   <li>Каталог</li>
                   <li>Корзина</li>
