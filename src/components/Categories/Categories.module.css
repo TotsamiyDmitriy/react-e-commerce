@@ -1,0 +1,84 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:regular,500,600);
+.container {
+  max-width: 1440px;
+  padding: 0 100px;
+  margin: auto;
+}
+@media (max-width: 992px) {
+  .container {
+    padding: 0 32px;
+  }
+}
+.container .categories {
+  margin-top: 64px;
+}
+@media (max-width: 767.98px) {
+  .container .categories h2 {
+    font-size: calc(24px + 34 * ((100vw - 320px) / 1440));
+  }
+}
+@media (min-width: 767.98px) {
+  .container .categories h2 {
+    font-size: calc(24px + 20 * (100vw / 1440));
+  }
+}
+.container .categories .wrapper_catalog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container .categories .wrapper_catalog .row {
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+@media (max-width: 768px) {
+  .container .categories .wrapper_catalog .row {
+    margin: 0;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+.container .categories .wrapper_catalog .row .catalog__card {
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s;
+}
+@media (max-width: 768px) {
+  .container .categories .wrapper_catalog .row .catalog__card {
+    margin-bottom: 30px;
+  }
+}
+.container .categories .wrapper_catalog .row .catalog__card .position {
+  width: 100%;
+  position: relative;
+}
+.container .categories .wrapper_catalog .row .catalog__card .position img {
+  width: 100%;
+  display: block;
+}
+.container .categories .wrapper_catalog .row .catalog__card .position span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
+@media (max-width: 767.98px) {
+  .container .categories .wrapper_catalog .row .catalog__card .position span {
+    font-size: calc(24px + 17 * ((100vw - 320px) / 1440));
+  }
+}
+@media (min-width: 767.98px) {
+  .container .categories .wrapper_catalog .row .catalog__card .position span {
+    font-size: calc(24px + 10 * (100vw / 1440));
+  }
+}
+.container .categories .wrapper_catalog .row .catalog__card:hover {
+  transform: scale(1.06);
+  box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
+}

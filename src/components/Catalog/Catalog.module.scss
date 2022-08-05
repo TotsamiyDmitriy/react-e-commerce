@@ -1,0 +1,117 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:regular,500,600);
+
+$maxWidth: 1440;
+
+@mixin adaptive-font($defSize, $mobSize) {
+  $addSize: $defSize - $mobSize;
+  $addMobSize: $addSize + $addSize * 0.7;
+  @media (max-width: 767.98px) {
+    font-size: calc(#{$mobSize + px} + #{$addMobSize} * ((100vw - 320px) / #{$maxWidth}));
+  }
+  @media (min-width: 767.98px) {
+    font-size: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
+  }
+}
+
+@mixin for-phone-only {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+@mixin for-tablet-portrait {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin for-tablet-landscape {
+  @media (max-width: 992px) {
+    @content;
+  }
+}
+@mixin for-desktop {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin for-big-desktop {
+  @media (max-width: 1920px) {
+    @content;
+  }
+}
+
+.container {
+  max-width: 1440px;
+  padding: 0 100px;
+  margin: auto;
+  @include for-tablet-landscape() {
+    padding: 0 32px;
+  }
+  .catalog {
+    margin: 0 -1.666%;
+    margin-top: 64px;
+    h2 {
+      @include adaptive-font(44, 24);
+      margin-left: 1.666%;
+      @include for-tablet-landscape() {
+        margin-left: 2%;
+      }
+    }
+    @include for-tablet-landscape() {
+      margin: 0 -2%;
+    }
+    .catalog__wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      flex: 0 1 33.333%;
+      justify-content: space-between;
+      &:last-child {
+        justify-content: flex-start;
+      }
+      .card {
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        margin: 0 1.666%;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        background-color: #fff;
+        @include for-tablet-landscape() {
+          width: 46%;
+          margin: 0 2%;
+          margin-bottom: 20px;
+        }
+        @include for-phone-only() {
+          width: 90%;
+          margin: 0 5%;
+          margin-bottom: 30px;
+        }
+        img {
+          display: block;
+        }
+        h3 {
+          @include adaptive-font(24, 18);
+          margin-bottom: 10px;
+          margin-left: 20px;
+        }
+        p {
+          color: #888888;
+          margin-left: 20px;
+        }
+        .price {
+          @include adaptive-font(24, 18);
+          margin-left: 20px;
+        }
+        &:hover {
+          transform: scale(1.06);
+
+          -webkit-box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.5);
+          -moz-box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.5);
+          transition: all 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+}
